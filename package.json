@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/Nitesh14022004/TokenBasedAuth/issues"
   },
-  "homepage": "https://github.com/Nitesh14022004/TokenBasedAuth#readme"
+  "homepage": "https://github.com/Nitesh14022004/TokenBasedAuth#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.7.0",
+    "nodemon": "^3.1.14"
+  }
 }
