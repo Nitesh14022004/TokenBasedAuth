@@ -1,14 +1,32 @@
 const express = require("express");
 const router = express.Router();
+const userModel = require("../models/user.model");
 
-router.post("/creste", (req,res) =>{
+router.post("/create", async (req,res) =>{
     
+    const token = req.cookies.token;
 
+    if(!token){
+        return res.status(401).json({
+            message: "Unauthorized"
+        })
+    }
+    try{
+        const decoded =jwt.verify(token, process.env.JWT_SECRET)
+
+        const user = userModel.findById({
+            _id: decoded.id
+        });
+        
+        console.log(user);
+
+
+    } catch(err){
+        return res.status(401).json({
+            message : "Token is invalid"
+        })
+    }
     
-    console.log(req.body);
-    
-    
-    console.log(req.cookies)
 
 
     res.send("post created successfully")
@@ -16,4 +34,4 @@ router.post("/creste", (req,res) =>{
 
 
 
-module.exports = router;
+module.exports = router; 
